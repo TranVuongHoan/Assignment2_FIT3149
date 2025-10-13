@@ -1,0 +1,42 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": { "text": "Quarterly CPI Change by Group" },
+  "data": {
+    "url": "https://raw.githubusercontent.com/TranVuongHoan/Assignment-2/refs/heads/main/tidy_cpi_by_city.csv"
+  },
+  "params": [
+    {
+      "name": "city_select",
+      "value": "Sydney",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Sydney",
+          "Melbourne",
+          "Brisbane",
+          "Adelaide",
+          "Perth",
+          "Hobart",
+          "Darwin",
+          "Canberra",
+          "Weighted average of eight capital cities"
+        ],
+        "name": "Select City: "
+      }
+    }
+  ],
+  "transform": [
+    { "filter": "datum.City == city_select" },
+    { "filter": "datum.Group != 'Source: Australian Bureau of Statistics, Consumer Price Index, Australia June Quarter 2025'" }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "y": { "field": "Group", "type": "ordinal" },
+    "x": {
+      "aggregate": "sum",
+      "field": "Quarterly_Percentage_Change",
+      "type": "quantitative"
+    },
+    "color": { "field": "Group", "type": "nominal", "legend": null }
+  }
+}

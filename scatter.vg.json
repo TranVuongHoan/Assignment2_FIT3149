@@ -1,0 +1,46 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": { "text": "Quarterly CPI Comparison vs National Average" },
+  "data": {
+    "url": "https://raw.githubusercontent.com/TranVuongHoan/Assignment-2/refs/heads/main/tidy_cpi_by_city.csv"
+  },
+  "params": [
+    {
+      "name": "city_select",
+      "value": "Sydney",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Sydney",
+          "Melbourne",
+          "Brisbane",
+          "Adelaide",
+          "Perth",
+          "Hobart",
+          "Darwin",
+          "Canberra"
+        ],
+        "name": "Select City: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum.Group != 'Source: Australian Bureau of Statistics, Consumer Price Index, Australia June Quarter 2025'"
+    },
+    {
+      "filter": "datum.City == city_select || datum.City == 'Weighted average of eight capital cities'"
+    }
+  ],
+  "mark": "circle",
+  "encoding": {
+    "x": { "field": "Group", "type": "ordinal" },
+    "y": { "field": "Quarterly_Percentage_Change", "type": "quantitative" },
+    "color": { "field": "City", "type": "nominal" },
+    "tooltip": [
+      { "field": "City", "type": "nominal" },
+      { "field": "Group", "type": "nominal" },
+      { "field": "Quarterly_Percentage_Change", "type": "quantitative" }
+    ]
+  }
+}

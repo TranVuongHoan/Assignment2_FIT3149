@@ -1,0 +1,32 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h1 {
+  text-align: center;   /* canh giữa */
+  margin-bottom: 50px;
+}
+
+.chart-container {
+  display: flex;              /* 2 cột ngang */
+  align-items: center;        /* căn giữa theo chiều dọc */
+  justify-content: space-between;
+  margin-bottom: 60px;
+  gap: 40px;
+}
+
+/* đảo chiều: chữ bên phải, hình bên trái */
+.chart-container.reverse {
+  flex-direction: row-reverse;
+}
+
+.chart-text {
+  flex: 1;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.chart-vis {
+  flex: 1.5;   /* biểu đồ rộng hơn chữ */
+}

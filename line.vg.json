@@ -1,0 +1,22 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Parallel Coordinates: CPI by City",
+  "data": {
+    "url": "https://raw.githubusercontent.com/TranVuongHoan/Assignment-2/refs/heads/main/tidy_cpi_by_city.csv"
+  },
+  "transform": [
+    { "filter": "datum.Group != 'Source: Australian Bureau of Statistics, Consumer Price Index, Australia June Quarter 2025'" }
+  ],
+  "mark": "line",
+  "encoding": {
+    "x": { "field": "Group", "type": "ordinal" },
+    "y": { "field": "Quarterly_Percentage_Change", "type": "quantitative" },
+    "detail": { "field": "City" },
+    "color": { "field": "City", "type": "nominal" },
+    "tooltip": [
+      { "field": "City", "type": "nominal" },
+      { "field": "Group", "type": "nominal" },
+      { "field": "Quarterly_Percentage_Change", "type": "quantitative" }
+    ]
+  }
+}

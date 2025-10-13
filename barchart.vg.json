@@ -1,0 +1,94 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": { "text": "Quarterly CPI Change by City" },
+  "data": {
+    "url": "https://raw.githubusercontent.com/TranVuongHoan/Assignment-2/refs/heads/main/tidy_cpi_by_city.csv"
+  },
+  "params": [
+    {
+      "name": "group_select",
+      "value": "All groups",
+      "bind": {
+        "input": "select",
+        "options": [
+          "All groups",
+          "Food & non-alcoholic beverages",
+          "Alcohol & tobacco",
+          "Clothing & footwear",
+          "Housing",
+          "Furnishings, household equipment and services",
+          "Health",
+          "Transport",
+          "Communication",
+          "Recreation & culture",
+          "Education",
+          "Insurance & financial services"
+        ],
+        "labels": [
+          "All groups",
+          "Food & non-alcoholic beverages",
+          "Alcohol & tobacco",
+          "Clothing & footwear",
+          "Housing",
+          "Furnishings, household equipment and services",
+          "Health",
+          "Transport",
+          "Communication",
+          "Recreation & culture",
+          "Education",
+          "Insurance & financial services"
+        ],
+        "name": "Select Group: "
+      }
+    }
+  ],
+  "transform": [
+    { "filter": "datum.Group == group_select" }
+  ],
+  "layer": [
+    {
+      "mark": { "type": "bar" },
+      "encoding": {
+        "x": { 
+          "field": "City", 
+          "type": "nominal", 
+          "sort": "-y",
+          "axis": { "labelAngle": -40 } 
+        },
+        "y": {
+          "aggregate": "sum",
+          "field": "Quarterly_Percentage_Change",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "City",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "range": [
+              "#E69F00", "#56B4E9", "#009E73",
+              "#F0E442", "#0072B2", "#D55E00",
+              "#CC79A7", "#999999", "#117733"
+            ]
+          }
+        },
+        "tooltip": [
+          { "field": "City", "type": "nominal" },
+          { "field": "Group", "type": "nominal" },
+          {
+            "field": "Quarterly_Percentage_Change",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Quarterly % Change"
+          }
+        ]
+      }
+    },
+    {
+      "mark": { "type": "rule", "color": "black", "strokeDash": [4,2] },
+      "encoding": {
+        "y": { "datum": 0 }
+      }
+    }
+  ]
+}

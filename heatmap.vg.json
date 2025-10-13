@@ -1,0 +1,25 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": { "text": "CPI Heatmap by City and Group" },
+  "data": {
+    "url": "https://raw.githubusercontent.com/TranVuongHoan/Assignment-2/refs/heads/main/tidy_cpi_by_city.csv"
+  },
+  "transform": [
+    { "filter": "datum.Group != 'Source: Australian Bureau of Statistics, Consumer Price Index, Australia June Quarter 2025'" }
+  ],
+  "mark": "rect",
+  "encoding": {
+    "x": { "field": "City", "type": "nominal" },
+    "y": { "field": "Group", "type": "ordinal" },
+    "color": {
+      "field": "Quarterly_Percentage_Change",
+      "type": "quantitative",
+      "scale": { "scheme": "reds" }
+    },
+    "tooltip": [
+      { "field": "City", "type": "nominal" },
+      { "field": "Group", "type": "nominal" },
+      { "field": "Quarterly_Percentage_Change", "type": "quantitative" }
+    ]
+  }
+}
