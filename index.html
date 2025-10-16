@@ -2,36 +2,155 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CPI & Climate Visualisation Dashboard</title>
 
-  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
   <script src="vega_lite_vis.js"></script>
 
-  <link rel="stylesheet" href="style.css">
-
-  <title>Vega-Lite Visualizations</title>
+  <link rel="stylesheet" href="cpi.css">
 </head>
-<body>
-  <h1>Vega-Lite Graphs</h1>
 
-  <div class="chart-container">
+<body>
+  <h1>Interactive Data Visualisations — CPI & Global Cyclones</h1>
+
+  <section class="chart-card intro-card">
+    <div class="chart-text">
+      <h2>Domain and Purpose of Visualisation</h2>
+      <p>
+        The domain of this project focuses on <strong>cost of living and inflation trends</strong> in Australia,
+        as reflected by the <em>Consumer Price Index (CPI)</em>. Rising household expenses have broad implications
+        for economic well-being, policy design, and affordability across Australian capital cities.
+      </p>
+      <p>
+        The dataset comes from the <strong>Australian Bureau of Statistics (ABS)</strong> —
+        <em>Consumer Price Index, Australia, June Quarter 2025</em> — which provides detailed CPI measures
+        for both overall and category-specific expenditure groups across major cities.
+      </p>
+      <p>
+        This dashboard combines multiple visualisation types — bar, heatmap, radial, scatter, line, and geospatial —
+        to highlight inflation dynamics, category drivers, and broader climate-economic contexts.
+        The aim is to create an interactive narrative that supports
+        <strong>exploration, comparison, and insight discovery</strong>.
+      </p>
+    </div>
+  </section>
+
+  <section class="chart-card horizontal">
+    <div class="chart-vis" id="bar_chart"></div>
     <div class="chart-text">
       <h2>How do CPI changes vary across Australia’s capital cities?</h2>
-        <p>This bar chart compares quarterly CPI changes across capital cities. Perth shows the highest increase, while Canberra records the lowest.</p>
+      <p>
+        The bar chart highlights that <span class="highlight">Perth</span> recorded the <span class="highlight">highest quarterly CPI increase of 1.9%</span>,
+        indicating stronger inflationary pressure than other cities. In contrast, <span class="highlight">Canberra</span> and <span class="highlight">Darwin</span>
+        show minimal growth, reflecting more stable consumer prices. The difference in CPI across cities underlines
+        the varied cost-of-living pressures Australians face based on geographic location.
+      </p>
     </div>
-    <div class="chart-vis" id="bar_chart"></div>
-  </div>
+  </section>
 
-  <div class="chart-container">
+  <section class="chart-card horizontal">
+    <div class="chart-vis" id="bar_chart2"></div>
+    <div class="chart-text">
+      <h2>Which categories contributed most to CPI change?</h2>
+      <p>
+        Across expenditure groups, <span class="highlight">Housing</span> and <span class="highlight">Food & Non-Alcoholic Beverages</span> dominate CPI increases,
+        reflecting rising rents and grocery prices. Meanwhile, <span class="highlight">Clothing & Footwear</span> also contributed notably
+        with seasonal demand spikes. The analysis reveals that core living costs — shelter and essentials — are driving the
+        <span class="highlight">overall inflation rate above 3.5%</span> in several cities.
+      </p>
+    </div>
+  </section>
+
+  <section class="chart-card horizontal">
+    <div class="chart-vis" id="heatmap"></div>
+    <div class="chart-text">
+      <h2>Which expenditure categories are most inflationary across most cities?</h2>
+      <p>
+        The heatmap reveals clear regional inflation clusters. <span class="highlight">Housing</span> and <span class="highlight">Transport</span> show consistently
+        darker shades — signalling steep price increases across all capitals. Conversely, <span class="highlight">Communication</span> and <span class="highlight">Education</span>
+        remain lighter, meaning stable or declining costs. The visual emphasises how housing and mobility remain the biggest contributors to
+        <span class="highlight">nationwide CPI acceleration</span>.
+      </p>
+    </div>
+  </section>
+
+  <section class="chart-card horizontal">
+    <div class="chart-vis" id="pie"></div>
+    <div class="chart-text">
+      <h2>Which expenditure groups contributed the most to CPI change?</h2>
+      <p>
+        This radial chart visually communicates the proportional weight of each CPI group. <span class="highlight">Housing</span> alone accounts for
+        nearly <span class="highlight">30% of total CPI variation</span>, followed by <span class="highlight">Food</span> and <span class="highlight">Transport</span>.
+        Together, these three categories shape the majority of price volatility in the Australian economy, underscoring how essential goods
+        directly amplify consumer cost burdens.
+      </p>
+    </div>
+  </section>
+
+  <section class="chart-card horizontal">
+    <div class="chart-vis" id="scatter"></div>
+    <div class="chart-text">
+      <h2>How does Sydney’s CPI change compare to the national average?</h2>
+      <p>
+        The scatterplot compares <span class="highlight">Sydney’s CPI group changes</span> against the <span class="highlight">weighted average of eight capital cities</span>.
+        For most categories, Sydney sits <span class="highlight">below the national average by 0.3–0.5%</span>, indicating milder inflation pressure relative to peers.
+        However, <span class="highlight">Housing</span> and <span class="highlight">Health</span> still show significant positive deviations, reflecting urban rent and service cost surges.
+      </p>
+    </div>
+  </section>
+
+  <section class="chart-card horizontal">
+    <div class="chart-vis" id="line"></div>
+    <div class="chart-text">
+      <h2>Which cities experienced the most extreme CPI changes in specific groups?</h2>
+      <p>
+        The parallel coordinates plot shows that <span class="highlight">Housing</span> remains a volatile driver across all cities, especially in
+        <span class="highlight">Perth</span> and <span class="highlight">Brisbane</span>, where price spikes exceed <span class="highlight">2.0%</span>.
+        <span class="highlight">Health</span> and <span class="highlight">Transport</span> also fluctuate heavily between regions,
+        suggesting localised supply chain impacts and differing state-level price policies.
+      </p>
+    </div>
+  </section>
+
+  <section class="chart-card horizontal">
+    <div class="chart-vis" id="map"></div>
     <div class="chart-text">
       <h2>Where in the world are tropical cyclones most frequent?</h2>
-        <p>This global cyclone map shows storm tracks from the last 3 years. Bubble size indicates wind speed, and colour shows central pressure.</p>
+      <p>
+        The cyclone map illustrates global storm density for the last 3 years. The <span class="highlight">Western Pacific</span> and <span class="highlight">North Atlantic</span>
+        basins show the highest storm frequencies, with wind speeds surpassing <span class="highlight">150 knots</span>. These climatic disruptions
+        highlight potential links between <span class="highlight">extreme weather events</span> and regional inflation patterns,
+        especially in sectors like <span class="highlight">transport</span> and <span class="highlight">agriculture</span>.
+      </p>
     </div>
-    <div class="chart-vis" id="map"></div>
-  </div>
+  </section>
 
+  <section class="chart-card">
+    <div class="chart-text">
+      <h2>Conclusion</h2>
+      <p>
+        Overall, inflationary patterns remain <span class="highlight">uneven across Australia</span>, with cities like
+        <span class="highlight">Perth</span> and <span class="highlight">Brisbane</span> leading CPI growth while <span class="highlight">Canberra</span> lags behind.
+        <span class="highlight">Housing, Food, and Transport</span> are confirmed as dominant inflation engines, aligning with national policy concerns.
+        The combined view of economic and climatic data provides a holistic picture of how environmental and supply factors reinforce inflation risks.
+      </p>
+    </div>
+  </section>
+
+  <section class="chart-card">
+    <div class="chart-text">
+      <h2>Sources</h2>
+      <ul>
+        <li>Australian Bureau of Statistics — <em>Consumer Price Index, Australia, June Quarter 2025</em>.</li>
+        <li>National Centers for Environmental Information (NOAA) — <em>International Best Track Archive for Climate Stewardship (IBTrACS)</em>.</li>
+        <li>Visualisations built with <strong>Vega-Lite v5</strong> and hosted on <strong>GitHub Pages</strong>.</li>
+      </ul>
+    </div>
+  </section>
+
+</body>
 </html>
