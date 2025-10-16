@@ -5,15 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Vega & Vega-Lite -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
 
-  <!-- Custom JS -->
   <script src="vega_lite_vis.js"></script>
 
-  <!-- External CSS -->
   <link rel="stylesheet" href="style.css">
 
   <title>Vega-Lite Visualizations</title>
@@ -21,68 +18,20 @@
 <body>
   <h1>Vega-Lite Graphs</h1>
 
-  <!-- Chart 1 (text left, chart right) -->
   <div class="chart-container">
     <div class="chart-text">
       <h2>How do CPI changes vary across Australia’s capital cities?</h2>
-      <p>This bar chart compares quarterly CPI changes across capital cities. Perth shows the highest increase, while Canberra records the lowest.</p>
+        <p>This bar chart compares quarterly CPI changes across capital cities. Perth shows the highest increase, while Canberra records the lowest.</p>
     </div>
     <div class="chart-vis" id="bar_chart"></div>
   </div>
 
-  <!-- Chart 2 (text right, chart left) -->
-  <div class="chart-container reverse">
-    <div class="chart-text">
-      <h2>Which categories contributed most to CPI change?</h2>
-      <p>This chart highlights the main expenditure groups driving CPI increases. Clothing & Footwear stands out as a major contributor.</p>
-    </div>
-    <div class="chart-vis" id="bar_chart2"></div>
-  </div>
-
-  <!-- Chart 3 (text left, chart right) -->
-  <div class="chart-container">
-    <div class="chart-text">
-      <h2>Which expenditure categories are most inflationary across most cities?</h2>
-      <p>The heatmap shows inflation intensity by category and city. Darker shades reveal higher CPI changes across the country.</p>
-    </div>
-    <div class="chart-vis" id="heatmap"></div>
-  </div>
-
-  <!-- Chart 4 (text right, chart left) -->
-  <div class="chart-container reverse">
-    <div class="chart-text">
-      <h2>Which expenditure groups contributed the most to CPI change?</h2>
-      <p>This radial chart illustrates the relative weight of each category in CPI changes for a selected city.</p>
-    </div>
-    <div class="chart-vis" id="pie"></div>
-  </div>
-
-  <!-- Chart 5 (text left, chart right) -->
-  <div class="chart-container">
-    <div class="chart-text">
-      <h2>How does Sydney’s CPI change compare to the national average?</h2>
-      <p>The scatterplot compares Sydney’s CPI group changes with the weighted average of eight capital cities.</p>
-    </div>
-    <div class="chart-vis" id="scatter"></div>
-  </div>
-
-  <!-- Chart 6 (text right, chart left) -->
-  <div class="chart-container reverse">
-    <div class="chart-text">
-      <h2>Which cities experienced the most extreme CPI changes in specific groups?</h2>
-      <p>The parallel coordinates chart shows how CPI profiles differ across categories, with Housing showing the sharpest spikes.</p>
-    </div>
-    <div class="chart-vis" id="line"></div>
-  </div>
-
-  <!-- Chart 7 (text left, chart right) -->
   <div class="chart-container">
     <div class="chart-text">
       <h2>Where in the world are tropical cyclones most frequent?</h2>
-      <p>This global cyclone map shows storm tracks from the last 3 years. Bubble size indicates wind speed, and colour shows central pressure.</p>
+        <p>This global cyclone map shows storm tracks from the last 3 years. Bubble size indicates wind speed, and colour shows central pressure.</p>
     </div>
     <div class="chart-vis" id="map"></div>
   </div>
 
-</body>
 </html>
