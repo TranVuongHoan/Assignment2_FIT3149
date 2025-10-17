@@ -1,6 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": { "text": "Quarterly CPI Comparison vs National Average" },
+  "title": {
+    "text": "Quarterly CPI Comparison vs National Average",
+    "fontSize": 18,
+    "fontWeight": "bold",
+    "anchor": "start"
+  },
   "data": {
     "url": "https://raw.githubusercontent.com/TranVuongHoan/Assignment-2/refs/heads/main/tidy_cpi_by_city.csv"
   },
@@ -32,15 +37,52 @@
       "filter": "datum.City == city_select || datum.City == 'Weighted average of eight capital cities'"
     }
   ],
-  "mark": "circle",
+  "mark": {
+    "type": "circle",
+    "size": 120,
+    "opacity": 0.8
+  },
   "encoding": {
-    "x": { "field": "Group", "type": "ordinal" },
-    "y": { "field": "Quarterly_Percentage_Change", "type": "quantitative" },
-    "color": { "field": "City", "type": "nominal" },
+    "x": {
+      "field": "Group",
+      "type": "ordinal",
+      "axis": {
+        "title": null,
+        "labelAngle": -40,
+        "labelFontSize": 11,
+        "labelColor": "#333"
+      }
+    },
+    "y": {
+      "field": "Quarterly_Percentage_Change",
+      "type": "quantitative",
+      "axis": {
+        "title": null,
+        "labelFontSize": 11,
+        "labelColor": "#333"
+      }
+    },
+    "color": {
+      "field": "City",
+      "type": "nominal",
+      "title": null,
+      "scale": {
+        "range": ["#E69F00", "#0072B2"]
+      }
+    },
     "tooltip": [
-      { "field": "City", "type": "nominal" },
-      { "field": "Group", "type": "nominal" },
-      { "field": "Quarterly_Percentage_Change", "type": "quantitative" }
+      { "field": "City", "type": "nominal", "title": "City" },
+      { "field": "Group", "type": "nominal", "title": "Expenditure Group" },
+      {
+        "field": "Quarterly_Percentage_Change",
+        "type": "quantitative",
+        "format": ".2f",
+        "title": "Quarterly % Change"
+      }
     ]
+  },
+  "config": {
+    "view": { "stroke": "transparent" },
+    "axis": { "grid": false }
   }
 }
