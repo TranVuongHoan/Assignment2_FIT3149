@@ -1,25 +1,59 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": { "text": "CPI Heatmap by City and Group" },
+  "title": { 
+    "text": "CPI Heatmap by City and Group",
+    "fontSize": 18,
+    "fontWeight": "bold",
+    "anchor": "start"
+  },
   "data": {
     "url": "https://raw.githubusercontent.com/TranVuongHoan/Assignment-2/refs/heads/main/tidy_cpi_by_city.csv"
   },
   "transform": [
-    { "filter": "datum.Group != 'Source: Australian Bureau of Statistics, Consumer Price Index, Australia June Quarter 2025'" }
+    { 
+      "filter": "datum.Group != 'Source: Australian Bureau of Statistics, Consumer Price Index, Australia June Quarter 2025'" 
+    }
   ],
   "mark": "rect",
   "encoding": {
-    "x": { "field": "City", "type": "nominal" },
-    "y": { "field": "Group", "type": "ordinal" },
+    "x": {
+      "field": "City",
+      "type": "nominal",
+      "axis": {
+        "title": null,
+        "labelAngle": 45,
+        "labelFontSize": 11,
+        "labelColor": "#333"
+      }
+    },
+    "y": {
+      "field": "Group",
+      "type": "ordinal",
+      "axis": {
+        "title": null,
+        "labelFontSize": 11,
+        "labelColor": "#333"
+      }
+    },
     "color": {
       "field": "Quarterly_Percentage_Change",
       "type": "quantitative",
+      "title": "Quarterly % Change",
       "scale": { "scheme": "reds" }
     },
     "tooltip": [
-      { "field": "City", "type": "nominal" },
-      { "field": "Group", "type": "nominal" },
-      { "field": "Quarterly_Percentage_Change", "type": "quantitative" }
+      { "field": "City", "type": "nominal", "title": "City" },
+      { "field": "Group", "type": "nominal", "title": "Expenditure Group" },
+      { 
+        "field": "Quarterly_Percentage_Change",
+        "type": "quantitative",
+        "title": "Quarterly % Change",
+        "format": ".2f"
+      }
     ]
+  },
+  "config": {
+    "view": { "stroke": "transparent" },
+    "axis": { "grid": false }
   }
 }
