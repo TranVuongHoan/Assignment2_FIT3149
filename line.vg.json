@@ -1,22 +1,98 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Parallel Coordinates: CPI by City",
+  "title": {
+    "text": "Parallel Coordinates: CPI by City",
+    "fontSize": 18,
+    "fontWeight": "bold",
+    "anchor": "start"
+  },
   "data": {
     "url": "https://raw.githubusercontent.com/TranVuongHoan/Assignment-2/refs/heads/main/tidy_cpi_by_city.csv"
   },
-  "transform": [
-    { "filter": "datum.Group != 'Source: Australian Bureau of Statistics, Consumer Price Index, Australia June Quarter 2025'" }
+  "params": [
+    {
+      "name": "city_select",
+      "value": "All",
+      "bind": {
+        "input": "select",
+        "options": [
+          "All",
+          "Sydney",
+          "Melbourne",
+          "Brisbane",
+          "Adelaide",
+          "Perth",
+          "Hobart",
+          "Darwin",
+          "Canberra"
+        ],
+        "labels": [
+          "All Cities",
+          "Sydney",
+          "Melbourne",
+          "Brisbane",
+          "Adelaide",
+          "Perth",
+          "Hobart",
+          "Darwin",
+          "Canberra"
+        ],
+        "name": "Select City: "
+      }
+    }
   ],
-  "mark": "line",
+  "transform": [
+    {
+      "filter": "datum.Group != 'Source: Australian Bureau of Statistics, Consumer Price Index, Australia June Quarter 2025'"
+    },
+    {
+      "filter": "city_select == 'All' || datum.City == city_select"
+    }
+  ],
+  "mark": {
+    "type": "line",
+    "strokeWidth": 2,
+    "opacity": 0.8
+  },
   "encoding": {
-    "x": { "field": "Group", "type": "ordinal" },
-    "y": { "field": "Quarterly_Percentage_Change", "type": "quantitative" },
+    "x": {
+      "field": "Group",
+      "type": "ordinal",
+      "axis": {
+        "title": null,
+        "labelAngle": -40,
+        "labelFontSize": 11,
+        "labelColor": "#333"
+      }
+    },
+    "y": {
+      "field": "Quarterly_Percentage_Change",
+      "type": "quantitative",
+      "axis": {
+        "title": null,
+        "labelFontSize": 11,
+        "labelColor": "#333"
+      }
+    },
     "detail": { "field": "City" },
-    "color": { "field": "City", "type": "nominal" },
+    "color": {
+      "field": "City",
+      "type": "nominal",
+      "title": null
+    },
     "tooltip": [
-      { "field": "City", "type": "nominal" },
-      { "field": "Group", "type": "nominal" },
-      { "field": "Quarterly_Percentage_Change", "type": "quantitative" }
+      { "field": "City", "type": "nominal", "title": "City" },
+      { "field": "Group", "type": "nominal", "title": "Expenditure Group" },
+      {
+        "field": "Quarterly_Percentage_Change",
+        "type": "quantitative",
+        "title": "Quarterly % Change",
+        "format": ".2f"
+      }
     ]
+  },
+  "config": {
+    "view": { "stroke": "transparent" },
+    "axis": { "grid": false }
   }
 }
