@@ -1,6 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": { "text": "Quarterly CPI Change by Group" },
+  "title": {
+    "text": "Quarterly CPI Change by Group",
+    "fontSize": 18,
+    "fontWeight": "bold",
+    "anchor": "start"
+  },
   "data": {
     "url": "https://raw.githubusercontent.com/TranVuongHoan/Assignment-2/refs/heads/main/tidy_cpi_by_city.csv"
   },
@@ -27,16 +32,55 @@
   ],
   "transform": [
     { "filter": "datum.City == city_select" },
-    { "filter": "datum.Group != 'Source: Australian Bureau of Statistics, Consumer Price Index, Australia June Quarter 2025'" }
+    {
+      "filter": "datum.Group != 'Source: Australian Bureau of Statistics, Consumer Price Index, Australia June Quarter 2025'"
+    }
   ],
-  "mark": "bar",
+  "mark": {
+    "type": "bar",
+    "cornerRadiusTopLeft": 4,
+    "cornerRadiusTopRight": 4
+  },
   "encoding": {
-    "y": { "field": "Group", "type": "ordinal" },
+    "y": {
+      "field": "Group",
+      "type": "ordinal",
+      "axis": {
+        "title": null,
+        "labelFontSize": 11,
+        "labelColor": "#333"
+      }
+    },
     "x": {
       "aggregate": "sum",
       "field": "Quarterly_Percentage_Change",
-      "type": "quantitative"
+      "type": "quantitative",
+      "axis": {
+        "title": null,
+        "labelFontSize": 11,
+        "labelColor": "#333"
+      }
     },
-    "color": { "field": "Group", "type": "nominal", "legend": null }
+    "color": {
+      "field": "Group",
+      "type": "nominal",
+      "legend": null,
+      "scale": {
+        "scheme": "category10"
+      }
+    },
+    "tooltip": [
+      { "field": "Group", "type": "nominal", "title": "Expenditure Group" },
+      {
+        "field": "Quarterly_Percentage_Change",
+        "type": "quantitative",
+        "format": ".2f",
+        "title": "Quarterly % Change"
+      }
+    ]
+  },
+  "config": {
+    "view": { "stroke": "transparent" },
+    "axis": { "grid": false }
   }
 }
