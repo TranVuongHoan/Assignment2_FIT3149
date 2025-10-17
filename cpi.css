@@ -1,3 +1,4 @@
+/* ======== GLOBAL STYLE ======== */
 body { 
   font-family: "Inter", Arial, sans-serif;
   background: #f7f8fa;
@@ -13,6 +14,7 @@ h1 {
   letter-spacing: 0.5px;
 }
 
+/* ======== CARD LAYOUT ======== */
 .chart-card {
   background: #fff;
   border-radius: 16px;
@@ -31,11 +33,13 @@ h1 {
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
 }
 
+/* Horizontal layout (graph left, text right) */
 .chart-card.horizontal {
   flex-direction: row;
   align-items: stretch;
 }
 
+/* ======== VISUAL AREA ======== */
 .chart-vis {
   flex: 1.6;
   text-align: center;
@@ -54,6 +58,7 @@ h1 {
   margin: 0 auto;
 }
 
+/* ======== TEXT AREA ======== */
 .chart-text {
   flex: 1;
   font-size: 16px;
@@ -80,11 +85,15 @@ h1 {
   overflow-wrap: anywhere;
 }
 
+/* ======== HIGHLIGHT STYLE ======== */
 .highlight {
   color: #d93025;
   font-weight: 600;
 }
 
+/* ======== SPECIAL CARDS ======== */
+
+/* Intro (Domain & Purpose) */
 .intro-card {
   flex-direction: column;
   text-align: left;
@@ -93,11 +102,14 @@ h1 {
   background: linear-gradient(180deg, #ffffff 0%, #f9fafc 100%);
 }
 
+/* Fix map overflow & layout */
 #map {
   padding: 10px;
   max-width: 100%;
-  min-height: 520px; 
+  min-height: 520px; /* ensures proportional height */
+}
 
+/* ======== RESPONSIVE DESIGN ======== */
 @media (max-width: 900px) {
   body { padding: 20px; }
   .chart-card {
@@ -124,4 +136,3 @@ h1 {
     order: 2;
   }
 }
-
