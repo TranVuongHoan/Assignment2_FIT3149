@@ -1,32 +1,127 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
+body { 
+  font-family: "Inter", Arial, sans-serif;
+  background: #f7f8fa;
+  margin: 0;
+  padding: 40px 0;
+  color: #222;
 }
 
 h1 {
-  text-align: center;   /* canh giữa */
-  margin-bottom: 50px;
-}
-
-.chart-container {
-  display: flex;              /* 2 cột ngang */
-  align-items: center;        /* căn giữa theo chiều dọc */
-  justify-content: space-between;
+  text-align: center;
   margin-bottom: 60px;
-  gap: 40px;
+  font-size: 2.2em;
+  letter-spacing: 0.5px;
 }
 
-/* đảo chiều: chữ bên phải, hình bên trái */
-.chart-container.reverse {
-  flex-direction: row-reverse;
+.chart-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  padding: 40px;
+  margin: 60px auto;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.chart-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.chart-card.horizontal {
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.chart-vis {
+  flex: 1.6;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.chart-vis iframe,
+.chart-vis canvas,
+.vega-embed {
+  width: 100% !important;
+  max-width: 95%;
+  height: auto !important;
+  margin: 0 auto;
 }
 
 .chart-text {
   flex: 1;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  padding-right: 20px;
 }
 
-.chart-vis {
-  flex: 1.5;   /* biểu đồ rộng hơn chữ */
+.chart-card h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.chart-card p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #333;
+  word-wrap: break-word;
+  hyphens: auto;
+  overflow-wrap: anywhere;
+}
+
+/* ======== HIGHLIGHT STYLE ======== */
+.highlight {
+  color: #d93025;
+  font-weight: 600;
+}
+
+.intro-card {
+  flex-direction: column;
+  text-align: left;
+  padding: 50px;
+  gap: 20px;
+  background: linear-gradient(180deg, #ffffff 0%, #f9fafc 100%);
+}
+
+#map {
+  padding: 10px;
+  max-width: 100%;
+  min-height: 520px; 
+
+@media (max-width: 900px) {
+  body { padding: 20px; }
+  .chart-card {
+    flex-direction: column;
+    padding: 25px;
+    margin: 40px 0;
+  }
+  .chart-card h2 {
+    font-size: 1.3em;
+    text-align: center;
+  }
+  .chart-text {
+    text-align: center;
+    padding-right: 0;
+  }
+  .intro-card {
+    text-align: left;
+    padding: 35px;
+  }
+  .chart-vis {
+    order: 1;
+  }
+  .chart-text {
+    order: 2;
+  }
 }
