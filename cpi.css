@@ -80,7 +80,6 @@ h1 {
   overflow-wrap: anywhere;
 }
 
-/* ======== HIGHLIGHT STYLE ======== */
 .highlight {
   color: #d93025;
   font-weight: 600;
@@ -125,3 +124,4 @@ h1 {
     order: 2;
   }
 }
+
